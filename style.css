@@ -1,0 +1,145 @@
+/* ===== Theme: Tokyo Night Storm ===== */
+:root {
+  --background: #24283b;
+  --background-overlay: rgba(36, 40, 59, 0.4);
+  --foreground: #c0caf5;
+  --prompt-tilde: #bb9af7;
+  --prompt-lambda: #7aa2f7;
+  --header: #7dcfff;
+  --link: #bb9af7;
+  --link-hover: #7aa2f7;
+  --branch: #565f89;
+  --search-label: #7dcfff;
+  --font-size: 22px;
+}
+
+/* ===== Base Styles ===== */
+@font-face {
+  font-family: "Hack";
+  src: local("Hack"), local("Roboto Mono"), local("Consolas"), local("monospace");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+body {
+  background: var(--background);
+  background-image: url('./images/reverse.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Hack", "Roboto Mono", "Consolas", monospace;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== Container ===== */
+.container {
+  background: var(--background-overlay);
+  border-radius: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 2rem;
+}
+
+/* ===== Prompt ===== */
+.prompt {
+  color: var(--prompt-tilde);
+  margin-bottom: 0.5rem;
+}
+
+.prompt .lambda {
+  color: var(--prompt-lambda);
+}
+
+.prompt.search-prompt {
+  margin-top: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+/* ===== Tree Layout ===== */
+.trees {
+  display: flex;
+  gap: 2rem;
+}
+
+.tree {
+  padding-left: 1rem;
+}
+
+/* ===== Tree Structure ===== */
+ul {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.tree > ul {
+  padding-left: 0;
+}
+
+li {
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Branch lines */
+li::before,
+li::after {
+  content: "";
+  position: absolute;
+  left: -1rem;
+}
+
+/* Horizontal branch */
+li::before {
+  border-top: 1px solid var(--branch);
+  top: 0.8rem;
+  width: 0.6rem;
+}
+
+/* Vertical branch */
+li::after {
+  border-left: 1px solid var(--branch);
+  height: 100%;
+  top: 0.2rem;
+}
+
+/* Last item - short vertical branch */
+li:last-child::after {
+  height: 0.6rem;
+}
+
+/* ===== Headers ===== */
+.header {
+  color: var(--header);
+  font-weight: normal;
+}
+
+/* ===== Links ===== */
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover,
+a:focus {
+  color: var(--link-hover);
+  outline: none;
+}
+
+/* ===== Search Hint ===== */
+.search-hint {
+  color: var(--link);
+  opacity: 0.7;
+}

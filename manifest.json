@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "StartTree",
+  "version": "1.0",
+  "description": "A minimal tree-style start page for Firefox",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{e8a3c7f1-5b2d-4a9e-b6c8-1d2f3a4b5c6d}",
+      "strict_min_version": "57.0"
+    }
+  }
+}
