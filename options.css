@@ -33,14 +33,58 @@ body {
   margin: 0 auto;
 }
 
+/* ===== Header ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 h1 {
   color: var(--prompt-tilde);
-  margin-bottom: 2rem;
   font-size: 1.5rem;
+  margin: 0;
 }
 
 h1 .lambda {
   color: var(--prompt-lambda);
+}
+
+/* ===== Color Grid ===== */
+.color-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.color-grid .form-group {
+  margin-bottom: 0;
+}
+
+input[type="color"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--branch);
+  border-radius: 4px;
+  background: var(--background);
+  cursor: pointer;
+  padding: 2px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 2px;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 2px;
+  border: none;
 }
 
 h2 {
@@ -220,17 +264,8 @@ input[type="file"] {
   opacity: 0.8;
 }
 
-/* ===== Actions ===== */
-.actions {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  margin-top: 1.5rem;
-}
-
 .status {
   font-size: 0.9rem;
-  margin-left: 1rem;
 }
 
 .status.success {
