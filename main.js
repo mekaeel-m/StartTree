@@ -1,6 +1,6 @@
 // Default configuration (used if nothing in storage)
 const defaultConfig = {
-  backgroundImage: '',
+  backgroundImage: 'https://w.wallhaven.cc/full/vg/wallhaven-vggjxm.jpg',
   colors: {
     background: '#24283b',
     overlay: '#24283b',
@@ -63,11 +63,36 @@ async function init() {
   
   // Apply background image
   if (config.backgroundImage) {
-    document.body.style.backgroundImage = `url('${config.backgroundImage}')`;
+    await applyBackgroundImage(config.backgroundImage);
   }
   
   // Render trees
   renderTrees(config.trees);
+}
+
+// Apply background image with preloading for web URLs
+async function applyBackgroundImage(imageUrl) {
+  // Check if it's a web URL
+  if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+    try {
+      // Preload the image
+      await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = imageUrl;
+      });
+      
+      // Image loaded successfully, apply it
+      document.body.style.backgroundImage = `url('${imageUrl}')`;
+    } catch (error) {
+      console.error('Failed to load background image:', imageUrl, error);
+      // Optionally fall back to default or no background
+    }
+  } else {
+    // Local file, set directly
+    document.body.style.backgroundImage = `url('${imageUrl}')`;
+  }
 }
 
 // Apply custom colors to CSS variables
